@@ -1,0 +1,20 @@
+# Node
+node_modules/
+
+# TypeScript
+*.tsbuildinfo
+/dist
+
+# SQLite DB
+*.db
+
+# Logs
+*.log
+
+# Env
+.env
+
+# VSCode
+.vscode/
+
+.DS_Store
