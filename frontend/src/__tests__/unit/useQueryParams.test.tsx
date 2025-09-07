@@ -21,8 +21,6 @@ describe("useQueryParams hook", () => {
       result.current.setQueryParams({ campus: "campus1" });
     });
 
-    console.log(result.current);
-
     expect(result.current.queryParams.campus).toEqual(["campus1"]);
   });
 });

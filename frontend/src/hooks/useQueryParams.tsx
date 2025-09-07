@@ -30,8 +30,6 @@ const useQueryParams = <T = Record<string, string>,>() => {
    * @param {Object} params - The new query parameters to set.
    */
   const setQueryParams = (params: Partial<T>) => {
-    console.log("Setting query params:", params);
-
     const updatedParams: Record<string, unknown> = {
       ...queryParams,
       ...params,
@@ -45,8 +43,6 @@ const useQueryParams = <T = Record<string, string>,>() => {
       updatedParams as Record<string, string>
     );
     const query = search ? `?${search}` : "";
-
-    console.log("Pushing new URL with query:", `${pathname}${query}`);
 
     router.push(`${pathname}${query}`);
   };
