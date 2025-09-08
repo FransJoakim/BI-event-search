@@ -1,5 +1,5 @@
 import express from "express";
-import searchEventsRouter from "./routes/search/events";
+import searchEventsRouter from "./routes/search/events.js";
 
 const app = express();
 

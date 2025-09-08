@@ -1,21 +1,10 @@
 import axios from "axios";
-import { type Event, type EventSearchResponse } from "../models/event";
-import { aggregateEventResults } from "../lib/aggregateEventResults";
-import { stringifyQueryParams } from "../lib/stringifyQueryParams";
+import { aggregateEventResults } from "../lib/aggregateEventResults.js";
+import { stringifyQueryParams } from "../lib/stringifyQueryParams.js";
 
 const EVENTS_API = "https://bi.no/api/calendar-events";
 
-interface Params {
-  campus?: string[];
-  language?: string[];
-  audience?: string[];
-  sort?: string;
-  s?: string;
-}
-
-export async function fetchEvents(
-  params: Params
-): Promise<EventSearchResponse> {
+export async function fetchEvents(params) {
   const {
     language = "all",
     campus,
@@ -24,7 +13,7 @@ export async function fetchEvents(
     sort = "asc",
   } = params;
 
-  const queryParams: Record<string, string | string[]> = {
+  const queryParams = {
     take: "500", // Maxing out at 500 to avoid cutting off results (pagination not supported by API)
   };
   if (campus) queryParams.campus = campus;
@@ -34,7 +23,7 @@ export async function fetchEvents(
   const qs = stringifyQueryParams(queryParams);
 
   const url = EVENTS_API + "?" + qs;
-  const { data } = await axios.get<Event[]>(url);
+  const { data } = await axios.get(url);
 
   let events = data;
 

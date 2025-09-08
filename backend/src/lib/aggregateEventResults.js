@@ -1,13 +1,8 @@
-import { campuses } from "../models/campus";
-import {
-  languageLabels,
-  languages,
-  type Event,
-  type SearchResultAggregation,
-} from "../models/event";
+import { campuses } from "../models/campus.js";
+import { languageLabels, languages } from "../models/event.js";
 
-export const aggregateEventResults = (events: Event[]) => {
-  const aggregations = {} as Record<string, number>;
+export const aggregateEventResults = (events) => {
+  const aggregations = {};
 
   // Generate aggregations for all filters
   events.forEach((event) => {
@@ -28,23 +23,21 @@ export const aggregateEventResults = (events: Event[]) => {
     }
 
     return acc;
-  }, [] as SearchResultAggregation[]);
+  }, []);
 
-  const audienceAggregations: SearchResultAggregation[] = Object.entries(
-    aggregations
-  ).map(([key, count]) => ({ key, name: key, count }));
+  const audienceAggregations = Object.entries(aggregations).map(
+    ([key, count]) => ({ key, name: key, count })
+  );
 
   const languageAggregations = languages.reduce((acc, lang) => {
-    const count = events.filter(
-      (e) => lang === (e.language as (typeof languages)[number])
-    ).length;
+    const count = events.filter((e) => lang === e.language).length;
 
     if (count > 0) {
       acc.push({ key: lang, name: languageLabels[lang] || "ukjent", count });
     }
 
     return acc;
-  }, [] as SearchResultAggregation[]);
+  }, []);
 
   return {
     campus: campusAggregations,

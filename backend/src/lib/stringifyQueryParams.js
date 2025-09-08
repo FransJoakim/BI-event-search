@@ -1,8 +1,6 @@
 // Minimal query string stringifier: joins key-value pairs
-export function stringifyQueryParams(
-  queryParams: Record<string, string | string[] | number | undefined>
-) {
-  const strings: string[] = [];
+export function stringifyQueryParams(queryParams) {
+  const strings = [];
 
   Object.entries(queryParams).forEach(([key, value]) => {
     if (!value) return;
