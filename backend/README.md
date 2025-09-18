@@ -25,14 +25,6 @@ The server will:
 - Store events in a local SQLite database
 - Expose a `/events` endpoint with filtering options
 
-### 3. Run tests
-
-```
-npm test
-```
-
-This will run the Jest test suite for the backend.
-
 ## Project Structure
 
 - `src/` — TypeScript source code

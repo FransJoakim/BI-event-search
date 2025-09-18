@@ -34,3 +34,11 @@ npm run start
 ```
 
 Open the web ui [http://localhost:3000](http://localhost:3000) in a browser
+
+### Run tests
+
+```
+npm test
+```
+
+This will run the Jest test suite for the frontend.
