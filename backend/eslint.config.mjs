@@ -1,8 +1,6 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import prettier from "eslint-plugin-prettier";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -30,7 +28,6 @@ export default defineConfig([
     ),
 
     plugins: {
-      "@typescript-eslint": typescriptEslint,
       prettier: fixupPluginRules(prettier),
       "unused-imports": fixupPluginRules(unusedImports), // unused imports
     },
@@ -74,44 +71,11 @@ export default defineConfig([
     },
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
-
-    extends: compat.extends(
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ),
+    files: ["**/*.js", "**/*.jsx"],
 
     languageOptions: {
       ecmaVersion: 5,
       sourceType: "script",
-
-      parserOptions: {
-        project: ["**/tsconfig.json"],
-      },
-    },
-
-    rules: {
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-empty-function": "off",
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-unsafe-argument": "warn",
-      "@typescript-eslint/no-unsafe-return": "warn",
-      "@typescript-eslint/no-unsafe-assignment": "warn",
-      "@typescript-eslint/no-unsafe-member-access": "warn",
-      "@typescript-eslint/restrict-template-expressions": "warn",
-      "@typescript-eslint/no-require-imports": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
-
-      "@typescript-eslint/no-misused-promises": [
-        2,
-        {
-          checksVoidReturn: {
-            attributes: false,
-          },
-        },
-      ],
     },
   },
 ]);
