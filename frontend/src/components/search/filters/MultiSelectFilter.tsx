@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import useQueryParams from "hooks/useQueryParams";
 import {
-  ARRAY_QUERY_PARAM_KEYS,
+  QUERY_PARAM_KEYS_ARRAY,
   SearchResultAggregation,
 } from "types/searchTypes";
 
@@ -24,7 +24,7 @@ const MultiSelectFilter = ({
   options,
 }: {
   label: string;
-  filterKey: (typeof ARRAY_QUERY_PARAM_KEYS)[number];
+  filterKey: (typeof QUERY_PARAM_KEYS_ARRAY)[number];
   options: SearchResultAggregation[] | undefined;
 }) => {
   const { queryParams, setQueryParams } =

@@ -1,6 +1,6 @@
 import { stringifyQueryParams } from "lib/stringifyQueryParams";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ARRAY_QUERY_PARAM_KEYS } from "types/searchTypes";
+import { QUERY_PARAM_KEYS_ARRAY } from "types/searchTypes";
 
 /**
  * Hook for reading and updating URL query parameters.
@@ -14,7 +14,7 @@ const useQueryParams = <T = Record<string, string>,>() => {
   useSearchParams().forEach((value, key) => {
     if (!value) return;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    if (ARRAY_QUERY_PARAM_KEYS.includes(key as any)) {
+    if (QUERY_PARAM_KEYS_ARRAY.includes(key as any)) {
       params[key] = params[key]
         ? [...(params[key] as string[]), value]
         : [value];

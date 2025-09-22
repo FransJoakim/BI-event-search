@@ -16,7 +16,7 @@ export type KeysWithArrayValues<T> = {
 /**
  * Runtime list of query keys that the backend expects as arrays.
  */
-export const ARRAY_QUERY_PARAM_KEYS = [
+export const QUERY_PARAM_KEYS_ARRAY = [
   "campus",
   "language",
   "audience",
@@ -29,7 +29,7 @@ export interface SearchResultAggregation {
 }
 
 export type EventSearchResponseAggregations = Record<
-  (typeof ARRAY_QUERY_PARAM_KEYS)[number],
+  (typeof QUERY_PARAM_KEYS_ARRAY)[number],
   SearchResultAggregation[]
 >;
 

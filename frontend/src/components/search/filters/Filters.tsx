@@ -1,7 +1,7 @@
 import MultiSelectFilter from "components/search/filters/MultiSelectFilter";
 import { fetchWithQueryParams } from "lib/fetchWithQueryParams";
 import {
-  ARRAY_QUERY_PARAM_KEYS,
+  QUERY_PARAM_KEYS_ARRAY,
   EventSearchResponse,
   QueryParams,
 } from "types/searchTypes";
@@ -22,7 +22,7 @@ const Filters = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex flex-col lg:gap-4">
-      {ARRAY_QUERY_PARAM_KEYS.map((key) => (
+      {QUERY_PARAM_KEYS_ARRAY.map((key) => (
         <MultiSelectFilter
           key={key}
           label={FILTER_LABELS[key]}
